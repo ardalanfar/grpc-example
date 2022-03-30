@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package cmd;
+
+message User {
+    int32 id = 1;
+    string name = 2;
+    string family = 3;
+}
+
+message Request{
+    string name = 1;
+}
+
+service UserService{
+    rpc GetUser (Request) returns (User);
+    rpc GetUsers (Request) returns (stream User);
+}
+
+
+//[Client] <=======> [server]  ===> [DB]

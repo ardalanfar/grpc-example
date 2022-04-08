@@ -18,6 +18,7 @@ type VarConfig struct {
 	Port string
 }
 
+//Get config
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{

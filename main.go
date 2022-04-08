@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Service_grpc/client"
-	"Service_grpc/server"
+	"grpc-example/client"
+	"grpc-example/server"
 
 	"flag"
 	"strings"

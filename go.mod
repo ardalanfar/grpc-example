@@ -1,4 +1,4 @@
-module Service_grpc
+module grpc-example 
 
 go 1.17
 

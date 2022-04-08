@@ -1,9 +1,9 @@
 package server
 
 import (
-	"Service_grpc/cmd"
-	"Service_grpc/database"
 	"context"
+	"grpc-example/cmd"
+	"grpc-example/database"
 )
 
 type Grpcserver struct {
@@ -16,6 +16,7 @@ func NewGServer() *Grpcserver {
 	}
 }
 
+//Get user by name and send
 func (server *Grpcserver) GetUser(ctx context.Context, r *cmd.Request) (*cmd.User, error) {
 	user, err := server.Dbhandler.GetUserByName(r.GetName())
 	if err != nil {
@@ -25,6 +26,7 @@ func (server *Grpcserver) GetUser(ctx context.Context, r *cmd.Request) (*cmd.Use
 	return grpcUser, nil
 }
 
+//Get users and send Stream
 func (server *Grpcserver) GetUsers(r *cmd.Request, stream cmd.UserService_GetUsersServer) error {
 	users, err := server.Dbhandler.GetUsres()
 	if err != nil {
@@ -41,6 +43,7 @@ func (server *Grpcserver) GetUsers(r *cmd.Request, stream cmd.UserService_GetUse
 	return nil
 }
 
+//Convert to gRps user struct
 func convertToGrpcUser(user database.User) *cmd.User {
 	return &cmd.User{
 		Id:     int32(user.ID),

@@ -1,10 +1,10 @@
 package client
 
 import (
-	"Service_grpc/cmd"
-	"Service_grpc/conf"
 	"context"
 	"fmt"
+	"grpc-example/cmd"
+	"grpc-example/conf"
 	"io"
 	"log"
 	"strings"
@@ -24,6 +24,7 @@ func RunGrpcClient() {
 	fmt.Println("All People? (y/n)")
 	fmt.Scanln(&input)
 
+	//Get Users
 	if strings.EqualFold(input, "y") {
 		users, err := client.GetUsers(context.Background(), &cmd.Request{})
 		if err != nil {
@@ -42,6 +43,7 @@ func RunGrpcClient() {
 		return
 	}
 
+	//Get user by name
 	fmt.Println("name?")
 	fmt.Scanln(&input)
 	user, err := client.GetUser(context.Background(), &cmd.Request{Name: input})

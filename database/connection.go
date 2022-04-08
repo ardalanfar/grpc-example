@@ -1,9 +1,9 @@
 package database
 
 import (
-	"Service_grpc/conf"
 	"database/sql"
 	"fmt"
+	"grpc-example/conf"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -21,8 +21,7 @@ func Connect() *sql.DB {
 	db, err := sql.Open("mysql", dsn)
 
 	if err != nil {
-		log.Fatal("Could not connect service_grpc")
+		log.Fatal("Could not connect database")
 	}
-
 	return db
 }

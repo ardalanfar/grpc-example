@@ -21,6 +21,7 @@ func CreateDBConnection() *SQLhandler {
 	}
 }
 
+//Get users
 func (handler *SQLhandler) GetUsres() ([]User, error) {
 	rows, err := handler.db.Query("select * from user")
 	if err != nil {
@@ -41,6 +42,7 @@ func (handler *SQLhandler) GetUsres() ([]User, error) {
 	return users, nil
 }
 
+//Get user by name
 func (handler *SQLhandler) GetUserByName(name string) (User, error) {
 	row := handler.db.QueryRow("select * from user where name=?", name)
 	u := User{}

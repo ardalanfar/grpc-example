@@ -26,7 +26,7 @@ func (server *Grpcserver) GetUser(ctx context.Context, r *cmd.Request) (*cmd.Use
 	return grpcUser, nil
 }
 
-//Get users and send Stream
+//Get users and send by Stream
 func (server *Grpcserver) GetUsers(r *cmd.Request, stream cmd.UserService_GetUsersServer) error {
 	users, err := server.Dbhandler.GetUsres()
 	if err != nil {
